@@ -1,16 +1,10 @@
 package main
 
 import (
-	"fmt"
 	"goServer/ginSample"
 	"net/http"
 	"time"
 )
-
-func FormatAsDate(t time.Time) string {
-	year, month, day := t.Date()
-	return fmt.Sprintf("%d-%02d-%02d", year, month, day)
-}
 
 func main() {
 	e := ginSample.New()
@@ -21,7 +15,6 @@ func main() {
 	home := e.Group("/api")
 	{
 		home.GET("/hello/:name", func(c *ginSample.Context) {
-			panic("okk11zz")
 			time.Sleep(time.Second * 10)
 			c.JSON(http.StatusOK, ginSample.H{
 				"data": c.Param("name"),
